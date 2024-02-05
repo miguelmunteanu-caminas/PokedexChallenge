@@ -1,6 +1,6 @@
 package com.example.pokedex.data.models
 
-data class Pokemon(
+data class PokemonDTO(
     val name: String,
     val sprites: Sprites,
     val types: Types,

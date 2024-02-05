@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -40,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.4"
     }
     packaging {
         resources {
@@ -50,8 +52,13 @@ android {
 }
 
 dependencies {
+    val hiltVersion = "2.48.1"
+
     implementation("androidx.compose.runtime:runtime-livedata:1.6.0")
     implementation("com.google.code.gson:gson:2.7")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
