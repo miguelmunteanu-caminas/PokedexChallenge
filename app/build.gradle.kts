@@ -3,6 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
 
     id("com.google.devtools.ksp")
+    id("dagger.hilt.android.plugin")
+    
+
 }
 
 android {
@@ -58,6 +61,20 @@ dependencies {
     implementation("com.google.code.gson:gson:2.7")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
+    ksp("com.google.dagger:hilt-compiler:$hiltVersion")
+    implementation("com.google.dagger:hilt-android:2.40.5")
+    implementation("androidx.navigation:navigation-compose:2.4.0")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation("androidx.room:room-runtime:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    //implementation("com.squareup.retrofit2:converter-moshi:2.9.0") no sé si hacerlo con moshi o gson, esta vez he elegido GSON
+
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
 
 
     implementation("androidx.core:core-ktx:1.12.0")
