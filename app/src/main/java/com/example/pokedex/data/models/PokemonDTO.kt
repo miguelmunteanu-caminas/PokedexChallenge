@@ -8,13 +8,13 @@ data class PokemonDTO(
     @SerializedName("sprites")
     val sprites: Sprites,
     @SerializedName("types")
-    val types: Types,
+    val types: List<Types>,
     @SerializedName("weight")
     val weight: Int,
     @SerializedName("height")
     val height: Int,
     @SerializedName("stats")
-    val stats: Stats,
+    val stats: List<Stat>
 )
 
 data class Sprites(
@@ -32,14 +32,14 @@ data class Type(
     val name: String,
 )
 
-data class Stats(
+data class Stat(
     @SerializedName("base_stat")
     val base_stat: Int,
     @SerializedName("stat")
-    val stat: Stat,
+    val stat: StatDetail,
 )
 
-data class Stat(
+data class StatDetail(
     @SerializedName("name")
     val name: String,
 )

@@ -1,6 +1,7 @@
 package com.example.pokedex.domain.repositories
 
-interface PokemonRepository<Pokemon> {
-    suspend fun getPokemonList(): List<Pokemon>
-    suspend fun getPokemonDetails(pokemonName: String): Pokemon
+import com.example.pokedex.domain.models.Pokemon
+
+interface PokemonRepository {
+    suspend fun getPokemonDetails(): Pokemon
 }

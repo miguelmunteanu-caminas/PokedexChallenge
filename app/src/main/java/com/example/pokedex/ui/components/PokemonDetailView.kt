@@ -7,9 +7,9 @@ import com.example.pokedex.ui.viewmodels.PokemonDetailViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun PokemonDetailView(pokemonName: String) {
+fun PokemonDetailView() {
     val viewModel: PokemonDetailViewModel = viewModel()
-    val pokemon = viewModel.getPokemonDetails(pokemonName)
+    val pokemon = viewModel.getPokemonDetails()
 
     Column {
         Text("Name: ${pokemon.name}")

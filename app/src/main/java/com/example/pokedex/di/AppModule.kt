@@ -17,19 +17,20 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+//@InstallIn(SingletonComponent::class)
+@InstallIn(ActivityComponent::class)
 object AppModule {
     @Provides
     @Singleton
     fun provideGson(): Gson {
         return GsonBuilder().create()
     }
-
+    /*
     @Provides
     @Singleton
     fun providePokemonApiService(gson: Gson): PokemonApiService {
-        val pokemonDTO: PokemonDTO = gson.fromJson(R.raw.ditto, PokemonDTO::class.java)
+        //val pokemonDTO: PokemonDTO = gson.fromJson(R.raw.ditto, PokemonDTO::class.java)
 
-        //return
-    }
+
+    }*/
 }

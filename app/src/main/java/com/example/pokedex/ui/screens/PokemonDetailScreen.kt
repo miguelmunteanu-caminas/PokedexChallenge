@@ -22,13 +22,13 @@ import com.example.pokedex.ui.components.PokemonDetailView
 import com.example.pokedex.ui.theme.PokedexTheme
 import com.example.pokedex.ui.viewmodels.PokemonDetailViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
+import javax.inject.Inject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun PokemonDetailScreen(
     navController: NavHostController,
-    pokemonName: String,
     viewModel: PokemonDetailViewModel
 ) {
     var isExpanded by remember { mutableStateOf(false) }
@@ -36,7 +36,7 @@ fun PokemonDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Screen de detai") },
+                title = { Text("Screen de detail") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
@@ -50,6 +50,6 @@ fun PokemonDetailScreen(
             )
         }
     ) {
-        PokemonDetailView(pokemonName = pokemonName)
+        PokemonDetailView()
     }
 }

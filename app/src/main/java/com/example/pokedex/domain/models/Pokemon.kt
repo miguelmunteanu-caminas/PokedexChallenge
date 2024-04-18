@@ -14,10 +14,10 @@ data class Pokemon(
     constructor(dto: PokemonDTO) : this(
         dto.name,
         dto.sprites.front_default,
-        dto.types.type.name,
+        dto.types.joinToString(", ") { it.type.name },
         dto.weight,
         dto.height,
-        dto.stats.base_stat,
-        dto.stats.stat.name
+        dto.stats.firstOrNull()?.base_stat ?: 0,
+        dto.stats.firstOrNull()?.stat?.name ?: ""
     )
 }

@@ -8,11 +8,11 @@ object PokemonDataMapper {
         return Pokemon(
             name = dto.name,
             spriteUrl = dto.sprites.front_default,
-            type = dto.types.type.name,
+            type = dto.types.joinToString(", ") { it.type.name },
             weight = dto.weight,
             height = dto.height,
-            baseStat = dto.stats.base_stat,
-            statName = dto.stats.stat.name
+            baseStat = dto.stats.firstOrNull()?.base_stat ?: 0,
+            statName = dto.stats.firstOrNull()?.stat?.name ?: ""
         )
     }
 }

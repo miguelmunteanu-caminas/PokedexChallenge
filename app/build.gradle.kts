@@ -72,7 +72,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
     //implementation("com.squareup.retrofit2:converter-moshi:2.9.0") no sé si hacerlo con moshi o gson, esta vez he elegido GSON
 
-    implementation("androidx.hilt:hilt-work:1.0.0")
+    //implementation("androidx.hilt:hilt-work:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
 
