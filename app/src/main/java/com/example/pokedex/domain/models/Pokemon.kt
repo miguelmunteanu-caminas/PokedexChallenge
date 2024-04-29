@@ -8,8 +8,9 @@ data class Pokemon(
     val type: String,
     val weight: Int,
     val height: Int,
-    val baseStat: Int,
-    val statName: String
+    //val baseStat: Int,
+    //val statName: String
+    val stats: List<Stat>
 ) {
     constructor(dto: PokemonDTO) : this(
         dto.name,
@@ -17,7 +18,13 @@ data class Pokemon(
         dto.types.joinToString(", ") { it.type.name },
         dto.weight,
         dto.height,
-        dto.stats.firstOrNull()?.base_stat ?: 0,
-        dto.stats.firstOrNull()?.stat?.name ?: ""
+        //dto.stats.firstOrNull()?.base_stat ?: 0,
+        //dto.stats.firstOrNull()?.stat?.name ?: ""
+        dto.stats.map { Stat(it.base_stat, it.stat.name) }
     )
 }
+
+data class Stat(
+    val baseStat: Int,
+    val name: String
+)
