@@ -30,96 +30,20 @@ import coil.compose.rememberImagePainter
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.models.Stat
 
+
+const val pokemonNameFontSize = 36
+const val pokemonTypeFontSize = 20
+const val pokemonDimensionsFontSize = 22
+const val pokemonBaseStatsFontSize = 22
+
+val dittoColor = Color(197, 123, 230)
+val backgroundColor = Color(40, 40, 40)
+
 @Composable
 fun PokemonDetailView() {
     val viewModel: PokemonDetailViewModel = hiltViewModel<PokemonDetailViewModel>()
     val pokemon = viewModel.getPokemonDetails()
 
-    Row(
-        modifier = Modifier
-            .clip(shape = RoundedCornerShape(0.dp, 0.dp, 40.dp, 40.dp))
-            .background(Color(197, 123, 230))
-            .padding(PaddingValues(all = 20.dp))
-    ) {
-        showPokemonImage(pokemon)
-    }
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 20.dp)
-    ) {
-        //Text("${pokemon.name}", fontSize = 36.sp, fontWeight = FontWeight.Bold, color = Color.White)
-        boldText("${pokemon.name}", 36)
-    }
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp, bottom = 20.dp)
-    ) {
-        Box(modifier = Modifier
-            .width(100.dp)
-            .height(30.dp)
-            .clip(shape = RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp))
-            .background(Color(204, 102, 0))
-        ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                //Text("${pokemon.type}", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                boldText(text = "${pokemon.type}", fontsize = 20)
-            }
-        }
-    }
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Column {
-            Row {
-                Text("${pokemon.weight} KG", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color.White)
-            }
-            Text(text = "Weight", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color(123,120,124), modifier = Modifier.padding(all = 7.dp))
-        }
-        Column {
-            Row {
-                Text("${pokemon.height} M", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color.White)
-            }
-            Text(text = "Height", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color(123,120,124),  modifier = Modifier.padding(all = 7.dp))
-        }
-    }
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 15.dp, bottom = 10.dp)
-    ) {
-        Text(text = "Base Stats", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color.White)
-    }
-    for (stat in pokemon.stats) {
-        Row(
-            modifier = Modifier
-                .padding(all = 7.dp)
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .width(100.dp)
-            ) {
-                Text(text = mapStatName(stat.name).uppercase(), color = Color.LightGray)
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                val percentage = (stat.baseStat.toFloat() / 300) * 100
-
-                statBox(stat = stat, percentage = percentage)
-            }
-        }
-    }
 }
 
 fun mapStatName(statName: String): String {
@@ -163,6 +87,16 @@ fun showPokemonImage(pokemon: Pokemon) {
 @Composable
 fun boldText(text: String, fontsize: Int) {
     Text("${text}", fontSize = fontsize.sp, fontWeight = FontWeight.Bold, color = Color.White)
+}
+
+@Composable
+fun dimensionName(text: String) {
+    Text("${text}", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color(123,120,124),  modifier = Modifier.padding(all = 7.dp))
+}
+
+@Composable
+fun statNameText(text: String) {
+    Text(text = mapStatName(text).uppercase(), color = Color.LightGray)
 }
 
 @Composable
